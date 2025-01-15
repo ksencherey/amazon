@@ -1,6 +1,14 @@
 import { cart, removeFromCart } from '../data/cart.js'
 import { products } from '../data/products.js'
-import { formatCurrency } from './utils/money.js'
+import formatCurrency from './utils/money.js'
+import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'
+
+
+const today = dayjs()
+const deliveryDate = today.add(7, 'days')
+console.log(deliveryDate.format('dddd, MMMM D'))
+
+
 let carSummaryHTML = ''
 
 cart.forEach((cartItem) => {
@@ -94,6 +102,17 @@ document.querySelectorAll('.js-delete-link').forEach((link) => {
         removeFromCart(productId)
 
         const container = document.querySelector(`.js-cart-item-container-${productId}`)
+        console.log(container)
         container.remove()
+        updateCartQuantity()
     })
 })
+
+function updateCartQuantity() {
+    let cartQuantity = 0
+    cart.forEach((cartItem) => {
+        cartQuantity += cartItem.quantity
+    })
+    document.querySelector('.js-return-to-home-link').innerHTML = `${cartQuantity} items`
+}
+updateCartQuantity()

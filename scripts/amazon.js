@@ -64,9 +64,9 @@ function updateCartQuantity() {
   cart.forEach((cartItem) => {
     cartQuantity += cartItem.quantity
   })
-
   document.querySelector('.js-cart-quantity').innerHTML = cartQuantity
 }
+updateCartQuantity()
 
 function addMessageAndClear(productId) {
   const addedToCartElement = document.querySelector(`.js-added-to-cart-${productId}`)
