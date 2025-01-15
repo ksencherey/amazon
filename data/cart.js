@@ -1,9 +1,9 @@
 export let cart = [{
     productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-    quauntity: 2
+    quantity: 2
 }, {
     productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
-    quauntity: 1
+    quantity: 1
 }]
 
 export function addToCart(productId) {
@@ -18,11 +18,11 @@ export function addToCart(productId) {
     const selectedValue = Number(selectorElement.value)
 
     if (matchingItem) {
-        matchingItem.quauntity += selectedValue
+        matchingItem.quantity += selectedValue
     } else {
         cart.push({
             productId: productId,
-            quauntity: selectedValue
+            quantity: selectedValue
         })
     }
 }
@@ -30,7 +30,7 @@ export function addToCart(productId) {
 export function removeFromCart(productId) {
     const newCart = []
     cart.forEach((cartItem) => {
-        if (productId !== cartItem.productId) {
+        if (cartItem.productId !== productId) {
             newCart.push(cartItem)
         }
     })
