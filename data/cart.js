@@ -41,6 +41,7 @@ export function addToCart(productId) {
 }
 
 export function removeFromCart(productId) {
+    
     const newCart = []
     cart.forEach((cartItem) => {
         if (cartItem.productId !== productId) {
@@ -48,6 +49,25 @@ export function removeFromCart(productId) {
         }
     })
     cart = newCart
+    
+   /*
+   // find the product in the cart
+   const cartItem = cart.find((item) =>{
+     item.productId === productId
+   })
+
+   if(cartItem){
+    // if quantity is more than 1, reduce the quantity by  1
+        if(cartItem.quantity > 1){
+            cartItem.quantity -= 1
+        } else{
+            // if the quantity is 1, remove the product completely
+            cart = cart.filter((item) =>{
+                item.productId !== productId
+            })
+        }
+   }*/
+   // save the updated cart to storage
     saveToStorage()
 }
 
